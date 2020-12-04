@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
+const { linter } = require('./linter');
 
 app.use(express.json());
 
 app.post('/lint', (req, res) => {
-    const results = isMatching(req.body.code);
+    const results = linter(req.body.code);
     res.send(results);
 })
 
