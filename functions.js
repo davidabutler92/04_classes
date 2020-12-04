@@ -27,8 +27,12 @@ const strSplitAndFilter = str => {
     .filter(char => char === '{' || char === '}' || char === '(' || char === ')' || char === '[' || char === ']')   
 }
 
-const test = 'function() = {hello})';
-console.log(isMatching(test));
+const exampleOne = 'function add(a, b) {return a + b;}';
+const exampleTwo = 'function getFirstInArray(arr) {const first = arr[0];return first;}';
+const exampleThree = 'function getSecondInArray(arr)) {const second = arr[1];return second;}';
+const exampleFour = 'function getSecondInArray(arr) {const second = arr[1;return second;}';
+
+console.log(isMatching(exampleTwo));
 
 module.exports = {
     isMatching
