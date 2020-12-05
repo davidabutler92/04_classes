@@ -40,6 +40,17 @@ const isMatching = arr => {
             }
         }
     })
+    if (stack.length) {
+        result = {
+            'missing': matchBrackets[peek || bracket]
+        }
+    }
+    const remainder = stack.peek()
+    if (remainder) {
+        result = {
+            'missing': matchBrackets[remainder]
+        }
+    }
     //returns results (either being true or missing object)
     return result;
 }
@@ -62,10 +73,9 @@ const linter = code => {
             'error': `missing ${result.missing}`
         }
     }
-    
 }
 
-const code = "const add = (((a, b) => { return a + b }}];"
+const code = "const add = (a, b) => { return a + b };"
 console.log(linter(code));
 
 module.exports = {
